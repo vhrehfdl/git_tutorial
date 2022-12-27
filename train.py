@@ -18,6 +18,10 @@ def pre_processing(train, test):
     test.loc[test["Sex"] == "female", "Sex"] = 1
 
     feature_names = ["Pclass", "Sex", "Fare", "SibSp", "Parch"]
+
+    train.drop(columns = 'Parch', inplace = True)
+    test.drop(columns = 'Parch', inplace = True)
+
     train_x, train_y = train[feature_names], train["Survived"]
     test_x, test_y = train[feature_names], train["Survived"]
 
