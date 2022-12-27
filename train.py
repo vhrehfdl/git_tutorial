@@ -19,6 +19,8 @@ def pre_processing(train, test):
 
     feature_names = ["Pclass", "Sex", "Fare", "SibSp", "Parch"]
     train_x, train_y = train[feature_names], train["Survived"]
+    length = len(train_x)
+    train_x, train_y = train_x[: length // 2], train_y[: length // 2]
     train_x, test_x, train_y, test_y = train_test_split(train_x, train_y, test_size=0.1)
 
     return train_x, train_y, test_x, test_y
