@@ -26,7 +26,7 @@ def pre_processing(train, test):
 
 def build_model(train_x, train_y):
     model = tree.BaseDecisionTree()
-    #model = tree.DecisionTreeClassifier()
+    # model = tree.DecisionTreeClassifier()
     model.fit(train_x, train_y)
 
     return model
