@@ -25,9 +25,9 @@ def pre_processing(train, test):
 
 
 def build_model(train_x, train_y):
-    from sklearn import tree
+    import xgboost as xgb
 
-    model = tree.DecisionTreeClassifier()
+    model = xgb.XGBClassifier()
     model.fit(train_x, train_y)
 
     return model
