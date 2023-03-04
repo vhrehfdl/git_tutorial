@@ -25,7 +25,9 @@ def pre_processing(train, test):
 
 
 def build_model(train_x, train_y):
-    model = GaussianNB()
+    from sklearn import tree
+
+    model = tree.DecisionTreeClassifier()
     model.fit(train_x, train_y)
 
     return model
