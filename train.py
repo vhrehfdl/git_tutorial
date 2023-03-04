@@ -7,6 +7,7 @@ from sklearn.naive_bayes import GaussianNB
 def load_data(train_dir, test_dir):
     train = pd.read_csv(train_dir, index_col=["PassengerId"])
     test = pd.read_csv(test_dir, index_col=["PassengerId"])
+    train = train[:len(train)]
 
     return train, test
 
@@ -17,9 +18,9 @@ def pre_processing(train, test):
     test.loc[test["Sex"] == "male", "Sex"] = 0
     test.loc[test["Sex"] == "female", "Sex"] = 1
 
-    feature_names = ["Pclass", "Sex", "Fare", "SibSp", "Parch"]
+    feature_names = ["Pclass", "Sex", "Fare", "SibSp"]
     train_x, train_y = train[feature_names], train["Survived"]
-    train_x, test_x, train_y, test_y = train_test_split(train_x, train_y, test_size=0.1)
+    test_x, test_y = test[feature_names], test["Survived"]
 
     return train_x, train_y, test_x, test_y
 
